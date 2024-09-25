@@ -11,7 +11,7 @@ int main()
 	scanf("%d", &height);
 
 	area = width * height;
-	
+
 	printf("Area: %d", area);
 
    	return 0;
