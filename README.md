@@ -1,2 +1,2 @@
 # Programming-I-Codes
-HW and LAB codes for my Programming I class
+HW, LAB and PROJECT codes for my Programming I class
