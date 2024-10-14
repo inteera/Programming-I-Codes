@@ -12,7 +12,7 @@ int main()
     printf("Enter %d. number\n>", (i+1));
     scanf("%d", &numbers[i]);
   }
-  //Assigning the first value for both lragest and smallest for algorithm
+  //Assigning the first value for both largest and smallest for algorithm
   largestNumber = numbers[0];
   smallestNumber = numbers[0];
 
