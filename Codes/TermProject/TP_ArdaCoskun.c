@@ -7,15 +7,33 @@ int main(){
     FILE *grades = fopen("Grades.txt", "w");
     FILE *statistics = fopen("Statistics.txt", "w");
 
-    char answers[104];
+    char answersA[51];
+    char answersB[51];
     char card[143];
     short int order = 1;
-
+    short int mt;
+    short int temp;
+    char a[2];
     
-    fgets(answers, 103, answerKeys);
+    fgets(answersA, 51, answerKeys);
+    fgets(a, 2, answerKeys);
+    fgets(answersB, 51, answerKeys);
+
+    printf("---\n");
+    for(int i = 0; i < 51; i++){
+        printf("%c", answersA[i]);
+    }
+    printf("\n---\n");
+    for(int i = 0; i < 51; i++){
+        printf("%c", answersB[i]);
+    }
+    printf("\n---\n");
+
     fprintf(grades, "sn. ID        Name                 MT");
     fprintf(grades, "\n");
+
     while(fgets(card, 143, cards) != NULL){
+
         fprintf(grades, "%03d ", order);
         order++;
 
@@ -28,19 +46,22 @@ int main(){
         for(int i = 0; i < 20; i++){
             fprintf(grades, "%c", card[i]);
         }
-
-        short int mt = 0;
-        int temp = 0;
+        printf("Booklet: %c, ", card[40]);
+        mt = 0;
+        temp = 0;
         while(temp < 50){
-            if(answers[temp] == card[42 + temp]){
-                printf("%c: %c, ", answers[temp], card[42 + temp]);
-                mt += 2;
+            switch (card[40]){
+                case 'A':
+                    if(answersA[temp] == card[41 + temp]) mt += 2;
+                case 'B':
+                    if(answersB[temp] == card[41 + temp]) mt += 2;
             }
             temp++;
         }
+        printf("%d", mt);
         printf("\n");
         fprintf(grades, " ");
-        fprintf(grades, "%d", mt);
+        fprintf(grades, "%2d", mt);
 
         fprintf(grades, "\n");
     }
