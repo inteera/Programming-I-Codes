@@ -7,25 +7,24 @@ int main(){
     FILE *grades = fopen("Grades.txt", "w");
     FILE *statistics = fopen("Statistics.txt", "w");
 
-    char answersA[51];
-    char answersB[51];
+    char answers[2][52];
     char card[143];
     short int order = 1;
     short int mt;
     short int temp;
     char a[2];
     
-    fgets(answersA, 51, answerKeys);
+    fgets(answers[0], 52, answerKeys);
     fgets(a, 2, answerKeys);
-    fgets(answersB, 51, answerKeys);
+    fgets(answers[1], 52, answerKeys);
 
     printf("---\n");
     for(int i = 0; i < 51; i++){
-        printf("%c", answersA[i]);
+        printf("%c", answers[0][i]);
     }
     printf("\n---\n");
     for(int i = 0; i < 51; i++){
-        printf("%c", answersB[i]);
+        printf("%c", answers[1][i]);
     }
     printf("\n---\n");
 
@@ -49,14 +48,13 @@ int main(){
         printf("Booklet: %c, ", card[40]);
         mt = 0;
         temp = 0;
-        while(temp < 50){
+        for(int temp = 1; temp <= 50; temp++){
             switch (card[40]){
                 case 'A':
-                    if(answersA[temp] == card[41 + temp]) mt += 2;
+                    if(answers[0][temp] == card[40 + temp]) mt += 2;
                 case 'B':
-                    if(answersB[temp] == card[41 + temp]) mt += 2;
+                    if(answers[1][temp] == card[40 + temp]) mt += 2;
             }
-            temp++;
         }
         printf("%d", mt);
         printf("\n");
@@ -65,6 +63,8 @@ int main(){
 
         fprintf(grades, "\n");
     }
+
+    //230508027
 
     return 0;
 } 

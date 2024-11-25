@@ -1,8 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/ardacoskun/Documents/GitHub/Programming-I-Codes/Codes/Lab5/Lab5_ArdaCoskun'
-relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _switchArray, symObjAddr: 0x0, symBinAddr: 0x100003D34, symSize: 0x100 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _switchArray, symObjAddr: 0x0, symBinAddr: 0x100003D34, symSize: 0x100 }
-  - { offsetInCU: 0xAB, offset: 0xAB, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x100, symBinAddr: 0x100003E34, symSize: 0x12C }
-...

@@ -1,31 +1,22 @@
 #include <stdio.h>
 
 int main(){
-    int array[10];
-    for(int i = 0; i < 10; i++){
-        printf("Enter %d. number => ", i + 1);
-        scanf("%d", &array[i]);
-    }
+    FILE *file = fopen("file.txt", "w+");
+    char firstName[15];
+    char fileFirstName[15];
 
-    printf("\n");
+    printf("Enter your name => ");
+    scanf("%s", firstName);
 
-    for(int i = 0; i < 10; i++){
-        printf("%d ", array[i]);
-    }
+    fprintf(file, "%s", firstName);
 
-    int temp;
+    fclose(file);
 
-    for(int i = 0; i < 3; i++){
-        temp = array[i];
-        array[i] = array[7 + i];
-        array[7 + i] = temp;
-    }
+    FILE *readFile = fopen("file.txt", "r");
 
-    printf("\n--\n");
-    for(int i = 0; i < 10; i++){
-        printf("%d ", array[i]);
-    }
-    printf("\n--");
+    fgets(fileFirstName, 15, readFile);
+
+    printf("Readed value => %s", fileFirstName);
 
     return 0;
 }
