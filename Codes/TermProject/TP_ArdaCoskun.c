@@ -18,19 +18,8 @@ int main(){
     fgets(a, 2, answerKeys);
     fgets(answers[1], 52, answerKeys);
 
-    printf("---\n");
-    for(int i = 0; i < 51; i++){
-        printf("%c", answers[0][i]);
-    }
-    printf("\n---\n");
-    for(int i = 0; i < 51; i++){
-        printf("%c", answers[1][i]);
-    }
-    printf("\n---\n");
-
     fprintf(grades, "sn. ID        Name                 MT");
     fprintf(grades, "\n");
-
     while(fgets(card, 143, cards) != NULL){
 
         fprintf(grades, "%03d ", order);
@@ -45,19 +34,11 @@ int main(){
         for(int i = 0; i < 20; i++){
             fprintf(grades, "%c", card[i]);
         }
-        printf("Booklet: %c, ", card[40]);
         mt = 0;
-        temp = 0;
-        for(int temp = 1; temp <= 50; temp++){
-            switch (card[40]){
-                case 'A':
-                    if(answers[0][temp] == card[40 + temp]) mt += 2;
-                case 'B':
-                    if(answers[1][temp] == card[40 + temp]) mt += 2;
-            }
+        short int key = card[40] == 'A' ? 0 : 1;
+        for(int temp = 1; temp < 51; temp++){
+            if(answers[key][temp] == card[40 + temp]) mt += 2;
         }
-        printf("%d", mt);
-        printf("\n");
         fprintf(grades, " ");
         fprintf(grades, "%2d", mt);
 
