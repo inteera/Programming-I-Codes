@@ -18,20 +18,23 @@ int main(){
     fgets(a, 2, answerKeys);
     fgets(answers[1], 52, answerKeys);
 
+    //Header
     fprintf(grades, "sn. ID        Name                 MT");
     fprintf(grades, "\n");
     while(fgets(card, 143, cards) != NULL){
-
+        //Order number
         fprintf(grades, "%03d ", order);
         order++;
 
+        //Student number
         for(int i = 31; i < 40; i++){
             fprintf(grades, "%c", card[i]);
         }
-        
         fprintf(grades, " ");
 
+        //Name
         for(int i = 0; i < 20; i++){
+            if(card[i] < 0) card[i] = '*';
             fprintf(grades, "%c", card[i]);
         }
         mt = 0;
