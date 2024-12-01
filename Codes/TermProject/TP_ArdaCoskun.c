@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main(){
 
@@ -70,6 +71,7 @@ int main(){
         if(error){
             fgets(card, 143, cards);
         }
+        error = 0;
     }
 
     //230508027
