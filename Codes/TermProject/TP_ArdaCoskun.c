@@ -25,11 +25,10 @@ int main(){
     fprintf(grades, "sn. ID        Name                 MT");
     fprintf(grades, "\n");
     while(fgets(card, 143, cards) != NULL){
+
         //Is the name writable
         for (int i = 0; i < 20; i++) {
-            if (isprint(card[i])) {
-                
-            } else {
+            if (!isprint(card[i])) {
                 error = 1;
             }
         }
@@ -54,7 +53,7 @@ int main(){
                 fprintf(grades, "%c", card[i]);
             } else {
                 error = 1;
-                fprintf(grades, "?"); // Bozuk karakter yerine '?' koyabilirsiniz
+                fprintf(grades, "?");
             }
         }
 
@@ -73,8 +72,6 @@ int main(){
         }
         error = 0;
     }
-
-    //230508027
 
     return 0;
 } 
