@@ -15,11 +15,9 @@ int main(){
     short int temp;
     short int key;
     short int error = 0;
-    char a[2];
     
-    fgets(answers[0], 52, answerKeys);
-    fgets(a, 2, answerKeys);
-    fgets(answers[1], 52, answerKeys);
+    fgets(answers[0], 53, answerKeys);
+    fgets(answers[1], 53, answerKeys);
 
     //Header
     fprintf(grades, "sn. ID        Name                 MT");
