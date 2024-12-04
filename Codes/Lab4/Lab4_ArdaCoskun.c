@@ -2,7 +2,7 @@
 
 int main(){
 
-  int numbers[10], sum, avg, maximum, minimum, lengthOfArray;
+  int numbers[10], sum = 0, avg, maximum, minimum, lengthOfArray;
 
   lengthOfArray = sizeof(numbers) / sizeof(numbers[0]);
   
@@ -23,6 +23,7 @@ int main(){
     if(numbers[i] <= minimum){
       minimum = numbers[i];
     }
+    printf("%d\n", sum);
   }
 
   avg = sum / lengthOfArray;
