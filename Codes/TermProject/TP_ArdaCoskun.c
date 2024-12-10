@@ -20,74 +20,42 @@ int main(){
     int stdno = 384;
     char answers[2][52];
     Student students[stdno];
+    int key = 0;
     int temp;
+    char tempc[143];
     int error = 0;
     
     fgets(answers[0], 53, answerKeys);
     fgets(answers[1], 53, answerKeys);
 
-    //Header
     fprintf(grades, "sn. ID        Name                 MT");
     fprintf(grades, "\n");
-    //143
+
     for(int i = 0; i < stdno; i++){
         fgets(students[i].name, 20, cards);
         fgets(students[i].nationalID, 13, cards);
         fgets(students[i].number, 10, cards);
         fgets(&students[i].bookletType, 2, cards);
-        fgets(students[i].answers, 51, cards);
-        printf("%s  %s  %s  %c  %s", students[i].name, students[i].nationalID, students[i].number, students[i].bookletType, students[i].answers);
-        fprintf(grades, "%03d ", i + 1);
+        fgets(students[i].answers, 52, cards);
+
+        for (int j = 0; j < 20; j++) {
+            if (!isprint(students[i].name[i])) {
+                error = 1;
+            }
+        }
+
+        students[i].grade = 0;
+        key = students[i].bookletType == 'A' ? 0 : 1;
+        for(int temp = 0; temp < 50; temp++){
+            if(answers[key][temp + 1] == students[i].answers[temp]) students[i].grade += 2;
+        }
+
+            fgets(tempc, 143, cards);
     }
-        /*
-        //Is the name writable
-        fgets(card, 143, cards)
-        for (int i = 0; i < 20; i++) {
-            if (!isprint(card[i])) {
-                error = 1;
-            }
-        }
-
-        //Order number
-        fprintf(grades, "%03d ", order);
-        order++;
-
-        //Student number
-        for(int i = 31; i < 40; i++){
-            int temp = i;
-            if(error){
-                temp += 1;
-            }
-            fprintf(grades, "%c", card[temp]);
-        }
-        fprintf(grades, " ");
-
-        //Name
-        for (int i = 0; i < 20; i++) {
-            if (isprint(card[i])) {
-                fprintf(grades, "%c", card[i]);
-            } else {
-                error = 1;
-                fprintf(grades, "?");
-            }
-        }
-
-        mt = 0;
-        key = card[40] == 'A' ? 0 : 1;
-        for(int temp = 1; temp < 51; temp++){
-            if(answers[key][temp] == card[40 + temp]) mt += 2;
-        }
-        fprintf(grades, " ");
-        fprintf(grades, "%2d", mt);
-
-        fprintf(grades, "\n");
-
-        if(error){
-            fgets(card, 143, cards);
-        }
-        error = 0;
-        */
-        
+    for(int i = 0; i < stdno; i++){
+        fprintf(grades, "%03d %s %-20s %3d\n", i + 1, students[i].number, students[i].name, students[i].grade);
+        printf("%03d %s %-20s %3d\n", i + 1, students[i].number, students[i].name, students[i].grade);
+    }
 
     return 0;
 } 
