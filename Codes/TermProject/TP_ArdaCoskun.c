@@ -6,7 +6,7 @@ struct Student{
     char number[10];
     char nationalID[12];
     char bookletType;
-    char answers[51];
+    char answers[101];
     int grade;
 } typedef Student;
 
@@ -36,7 +36,7 @@ int main(){
         fgets(students[i].nationalID, 13, cards);
         fgets(students[i].number, 10, cards);
         fgets(&students[i].bookletType, 2, cards);
-        fgets(students[i].answers, 52, cards);
+        fgets(students[i].answers, 103, cards);
 
         for (int j = 0; j < 20; j++) {
             if (!isprint(students[i].name[i])) {
@@ -50,7 +50,6 @@ int main(){
             if(answers[key][temp + 1] == students[i].answers[temp]) students[i].grade += 2;
         }
 
-            fgets(tempc, 143, cards);
     }
     for(int i = 0; i < stdno; i++){
         fprintf(grades, "%03d %s %-20s %3d\n", i + 1, students[i].number, students[i].name, students[i].grade);
