@@ -27,7 +27,6 @@ int main(){
     Student students[stdno];
     int key = 0;
     int temp = 0;
-    char tempc[143];
     int error = 0;
     
     fgets(answers[0], 53, answerKeys);
@@ -40,21 +39,7 @@ int main(){
         fgets(students[i].name, 20, cards);
         for(int j = 0; j < 20; j++){
             if(students[i].name[j] > 128){
-                 temp = 1;
-                 /*switch (students[i].name[j]){
-                    case 128:
-                        students[i].name[j] = 67;
-                    case 129:
-                        students[i].name[j] = 117;
-                    case 135:
-                        students[i].name[j] = 99;
-                    case 153:
-                        students[i].name[j] = 79;
-                    case 154:
-                        students[i].name[j] = 85;
-                    default: 
-                        break;
-                 }*/
+                temp = 1;
             }
         }
         fgets(students[i].nationalID, 13 + temp, cards);
@@ -90,12 +75,25 @@ int main(){
     avgGrade = sum / stdno;
     for(int i = 0; i < stdno; i++){
         fprintf(grades, "%03d %s %-20s %3d\n", i + 1, students[i].number, students[i].name, students[i].grade);
-        printf("%03d %s %-20s %3d\n", i + 1, students[i].number, students[i].name, students[i].grade);
     }
-    /*for(int i = 0; i < 100; i++){
-        printf("%d. - %d\n", i + 1, answerStatistics[i]);
-    }*/
-    printf("%d, %d, %d", minGrade, maxGrade, avgGrade);
+    
+    fprintf(grades, "              Average               %d\n", avgGrade);
+    fprintf(grades, "              Maximum               %d\n", maxGrade);
+    fprintf(grades, "              Minimum               %d\n", minGrade);
 
+    fprintf(statistics, "Count of A booklets   = %d\n", countOfBooklets[0]);
+    fprintf(statistics, "Count of B booklets   = %d\n", countOfBooklets[1]);
+    fprintf(statistics, "Count of all booklets = %d\n\n", countOfBooklets[0] + countOfBooklets[1]);
+    fprintf(statistics, "Using Booklet A numbering:\n");
+    fprintf(statistics, "Q    NoC\n");
+    for(int i = 0; i < 50; i++){
+        fprintf(statistics, "%03d  %3d\n", i+1, (i+10 <= 50) ? answerStatistics[0][i] + answerStatistics[1][i+10] : answerStatistics[0][i] + answerStatistics[1][i-40]);
+    }
+
+    fclose(answerKeys);
+    fclose(cards);
+    fclose(grades);
+    fclose(statistics);
+    
     return 0;
 } 
