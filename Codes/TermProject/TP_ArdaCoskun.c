@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
 
 #define STDNO 384
 
@@ -17,7 +16,7 @@ void readAnswerKeys(FILE *file, char answers[2][52]) {
     fgets(answers[1], 53, file);
 }
 
-void readStudentData(FILE *file, Student *students, int *countOfBooklets) {
+void readCards(FILE *file, Student *students, int *countOfBooklets) {
     int temp = 0;
     for (int i = 0; i < STDNO; i++) {
         fgets(students[i].name, 20, file);
@@ -102,7 +101,7 @@ int main() {
     Student students[STDNO];
 
     readAnswerKeys(answerKeys, answers);
-    readStudentData(cards, students, countOfBooklets);
+    readCards(cards, students, countOfBooklets);
     calculateGrades(students, answers, answerStatistics);
     calculateStatistics(students, &minGrade, &maxGrade, &avgGrade);
     writeGrades(grades, students, minGrade, maxGrade, avgGrade);
