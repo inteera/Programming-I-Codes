@@ -79,7 +79,8 @@ void writeStatistics(FILE *statisticsFile, int countOfBooklets[2], int answerSta
     fprintf(statisticsFile, "Using Booklet A numbering:\n");
     fprintf(statisticsFile, "Q    NoC\n");
     for (int i = 0; i < 50; i++) {
-        fprintf(statisticsFile, "%03d  %3d\n", i + 1, (i + 10 <= 50) ? answerStatistics[0][i] + answerStatistics[1][i + 10] : answerStatistics[0][i] + answerStatistics[1][i - 40]);
+        fprintf(statisticsFile, "%03d  %3d\n", i + 1, (i + 10 <= 50) ? 
+        answerStatistics[0][i] + answerStatistics[1][i + 10] : answerStatistics[0][i] + answerStatistics[1][i - 40]);
     }
 }
 
